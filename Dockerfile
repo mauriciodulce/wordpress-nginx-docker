@@ -23,7 +23,7 @@ RUN set -ex; \
 		libzip-dev \
 	; \
 	\
-	docker-php-ext-configure gd --with-freetype --with-jpeg; \
+ 	docker-php-ext-configure gd --with-freetype --with-jpeg; \
 	docker-php-ext-install -j "$(nproc)" \
 		bcmath \
 		exif \
@@ -31,7 +31,7 @@ RUN set -ex; \
 		mysqli \
 		zip \
 	; \
-	pecl install imagick-3.4.4; \
+	pecl install imagick; \
 	docker-php-ext-enable imagick; \
 	\
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
@@ -93,5 +93,4 @@ RUN set -ex; \
 	done; \
 	chown -R www-data:www-data wp-content; \
 	chmod -R 777 wp-content
-
 VOLUME /var/www/html
